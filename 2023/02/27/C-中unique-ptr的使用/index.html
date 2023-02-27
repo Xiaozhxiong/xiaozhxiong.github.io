@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/archives/"/>
+    <link rel="canonical" href="http://example.com/2023/02/27/c-中unique-ptr的使用/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Hexo">
+    <meta property="og:title" content="C++中unique_ptr的使用">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.comarchives/index.html">
+    <meta property="og:url" content="http://example.com2023/02/27/C-中unique-ptr的使用/">
     <meta property="og:image" content="/images/redefine-logo.svg">
     <meta property="og:site_name" content="Zhixiong Xiao">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hexo">
+    <meta name="twitter:title" content="C++中unique_ptr的使用">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/redefine-logo.svg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            Archive -
+            C++中unique_ptr的使用 -
         
         Zhixiong Xiao
     </title>
@@ -128,7 +128,7 @@
                         
                             <li class="menu-item">
                                 <!-- Menu -->
-                                <a class="active" 
+                                <a class="" 
                                     href="/archives"  >
                                     
                                         
@@ -205,7 +205,7 @@
             
                 
                     <li class="drawer-menu-item flex-center">
-                        <a class="active" 
+                        <a class="" 
                         href="/archives"  >
                              
                                 
@@ -260,45 +260,165 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
-        
-<div class="archive-list-container">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">C++中unique_ptr的使用</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Zhixiong Xiao</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-02-27 21:19:08</span>
+        <span class="mobile">2023-02-27 21:19</span>
+        <span class="hover-info">Created</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[3]</span>
-            </div>
-            <ul class="article-list">
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-02-27 21:36:04</span>
+            <span class="mobile">2023-02-27 21:36</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/27/C-%E4%B8%ADunique-ptr%E7%9A%84%E4%BD%BF%E7%94%A8/"
-                        >C++中unique_ptr的使用</a>
-                        <span class="article-date">02-27</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/26/Post/"
-                        >Post</a>
-                        <span class="article-date">02-26</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/26/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">02-26</span>
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><code>unique_ptr</code>是C++11引入的一种智能指针，它完全拥有对所指向对象的使用所有权，不和其它对象共享。<code>unique_ptr</code> 不能被复制，只能被移动。当 unique_ptr 离开作用域时，会自动释放所管理的空间。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><p>使用构造函数或者 <code>make_unique</code> 函数来创建一个 <code>unique_ptr</code> 对象：<code>unique_ptr&lt;int&gt; up(new int(10));</code> 或者 <code>auto up=make_unique&lt;int&gt;(10);</code></p>
+<p>指向数组的 <code>unique_ptr</code> 的声明方式：</p>
+<ul>
+<li>用方括号来指定数组的大小：<code>std::unique_ptr&lt;int[]&gt; up(new int[10]);</code></li>
+<li>使用 <code>std::make_unique</code> 函数创建：<code>std::unique_ptr&lt;int []&gt; up=std::make_unique&lt;int []&gt;(10);</code></li>
+</ul>
+<h3 id="其它使用"><a href="#其它使用" class="headerlink" title="其它使用"></a>其它使用</h3><ul>
+<li>使用 <code>reset()</code> 函数来改变 <code>unique_ptr</code> 指向的对象：<code>up.reset(new int(20));</code></li>
+<li>使用 <code>release()</code> 函数来释放 <code>unique_ptr</code> 的所有权：<code>int *p=up.release();</code></li>
+<li>使用 <code>move()</code> 函数或者返回语句来转移 <code>unique_ptr</code> 的所有权：<code>auto up2=std::move(up);</code>或者 <code>return up;</code></li>
+<li>使用 <code>get()</code> 函数获取 <code>unique_ptr</code> 内部的原始指针：<code>int *p=up.get();</code></li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：C++中unique_ptr的使用</li>
+        <li>Post author：Zhixiong Xiao</li>
+        <li>Create time：2023-02-27 21:19:08</li>
+        <li>
+            Post link：https://xiaozhxiong.github.io/2023/02/27/C-中unique-ptr的使用/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/">#C++</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/02/26/Post/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Post</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">C++中unique_ptr的使用</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0"><span class="nav-text">构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E4%BD%BF%E7%94%A8"><span class="nav-text">其它使用</span></a></li></ol></li></ol>
+
     </div>
 </div>
+            </div>
+        
+    </div>
+</div>
+
 
                 
 
@@ -374,6 +494,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -470,6 +607,16 @@
 
 
 <div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
     
     
 </div>
